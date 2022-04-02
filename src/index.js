@@ -11,3 +11,4 @@ root.render(
   </StrictMode>
 );
 reportWebVitals();
+// create a function that generates random numbers

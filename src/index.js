@@ -1,14 +1,15 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
+// import "./index.css";
 import App from "./App";
-import reportWebVitals from './reportWebVitals';
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+// import reportWebVitals from "./reportWebVitals";
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <StrictMode>
+  <React.StrictMode>
     <App />
-  </StrictMode>
+  </React.StrictMode>
 );
-reportWebVitals();
-// create a function that generates random numbers
+
+// reportWebVitals();
+// 9926231b

@@ -1,47 +1,44 @@
-
-// import './App.css';
-// const Person = (props) =>{
-//  return(
-//    <>
-//     <h1>Name: {props.name}</h1>
-//      <h2>LastName: {props.lastname}</h2>
-//     <h3>Age: {props.age}</h3>
-//    </>
-//    )
-// }
-// const App = () =>{
- 
-//   return (
-//     <div className="App">
-//       <Person name ={'John'} lastname = {'Doe'} age = {'50'} />
-//       <Person name ={'Jane'} lastname = {'Doe'} age = {'33'} />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-// use of state
-
-
+import {useEffect} from "react";
+import MovieCard from "./MovieCard";
+import searchIcon from './search.svg';
 import './App.css';
-import {useState, useEffect}from 'react';
-
+const API_URL = "http://www.omdbapi.com?apikey=9926231b";
+const movie1 = {
+        "Title": "Hollywood's Master Storytellers: Spiderman Live",
+        "Year": "2006",
+        "imdbID": "tt2158533",
+        "Type": "movie",
+        "Poster": "N/A"
+}
 const App = () =>{
- const [counter, setCounter]= useState(0)
- useEffect(()=>{
- alert("You changed counter to "+ counter);
-  }, [counter])
-  return (
-    <div className="App">
-      <button onClick ={() => setCounter((prevCount) => prevCount -1) } >-</button>
-      <h1>{counter}</h1>
-      <button onClick ={() => setCounter((prevCount) => prevCount +1) } >+</button>
-     
-    
-    </div>
+  const searchmovies = async(title)=>{
+    const response = await fetch(`${API_URL}&s=${title}`)
+    const data = await response.json();
+    console.log(data.Search);
+  }
+  useEffect(()=>{
+  searchmovies('spiderman');
+  }, []);
+  return(
+ <div className = 'app'>
+   <h1>MovieLand</h1>
+   <div className="search">
+     <input
+     placeholder = 'search for movies'
+     value='Superman'
+     onChange={()=>{}}
+     />
+     <img
+     src={searchIcon}
+     alt='search'
+     onClick={()=>{}}
+     />
+   </div>
+   <div className="container">
+   <MovieCard movie1={movie1} />
+   </div>
+ </div>
+
   );
 }
-
 export default App;
